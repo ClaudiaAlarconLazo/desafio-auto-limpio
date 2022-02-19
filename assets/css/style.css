@@ -9,7 +9,7 @@
 }
 
 .cta {
-  height: 500px;
+
   border-top: 10px solid turquoise;
 }
 
@@ -46,7 +46,7 @@ hr.content-divider {
 }
 
 #parallax-1 {
-  background: url(https://source.unsplash.com/featured/?car);
+  background: url(https://source.unsplash.com/featured/?cars);
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -59,7 +59,7 @@ hr.content-divider {
 }
 
 #parallax-2 {
-  background: url(https://source.unsplash.com/featured/?motor);
+  background: url(https://source.unsplash.com/featured/?motors);
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -88,7 +88,7 @@ hr.content-divider {
   color: white;
 }
 
-input {
+input, select{
   background: transparent !important;
   border: 1px solid turquoise !important;
   color: white !important;
