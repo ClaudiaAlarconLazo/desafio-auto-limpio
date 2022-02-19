@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/ClaudiaAlarconLazo/desafio-auto-limpio/issues"
   },
-  "homepage": "https://github.com/ClaudiaAlarconLazo/desafio-auto-limpio#readme"
+  "homepage": "https://github.com/ClaudiaAlarconLazo/desafio-auto-limpio#readme",
+  "devDependencies": {
+    "prettier": "^2.5.1"
+  }
 }
