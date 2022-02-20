@@ -59,7 +59,7 @@ hr.content-divider {
 }
 
 #parallax-2 {
-  background: url(https://source.unsplash.com/featured/?motors);
+  background: url(https://source.unsplash.com/featured/?motor);
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -71,18 +71,6 @@ hr.content-divider {
   background: yellow;
 }
 
-#parallax-3 {
-  background: url(https://source.unsplash.com/featured/?city);
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-top: 10px solid hotpink;
-}
-
-#parallax-3 hr {
-  background: hotpink;
-}
 
 .label {
   color: white;
