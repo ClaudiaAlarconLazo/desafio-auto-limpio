@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <title>Auto-Limpio</title>
     <link rel="shortcut icon" href="./assets/img/carwash.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;800&display=swap" rel="stylesheet">
@@ -54,16 +55,17 @@
         <div class="columns is-mobile">
           <div class="column is-10 is-offset-1">
             <p class="title is-3 pb-2">Cotiza tu lavado con nosotros</p>
-            <form action="" onsubmit="addCarWash(event)">
+            <p id="car-help" class="help is-success is-hidden"></p>
+
+            <form onsubmit="addCarWash(event)">
               <p class="title is-5 pt-3">CLIENTE</p>
               <div class="columns is-multiline">
                 <div class="column is-one-third-desktop is-half-tablet">                  
                   <div class="field">
-                    <label class="label">RUT</label>
+                    <label class="label">RUT (12345678-9)</label>
                     <div class="control">
-                      <input id="rut" name="rut" class="input is-medium" type="text" placeholder="" oninput="" onblur="">
+                      <input id="rut" name="rut" class="input is-medium" type="text" placeholder="" oninput="validationInputRut()" onblur="validationInputRut()">
                       <p id="rut-help" class="help is-danger is-hidden"></p>
-
                     </div>
                   </div>
                 </div>
@@ -102,8 +104,8 @@
                   <div class="field">
                     <label class="label">Comuna</label>
                     <div class="control">
-                      <div class="select is-fullwidth is-medium" id="state-select">
-                        <select id="state" name="state" oninput="validationSelectState()" onblur="validationSelectState()">
+                      <div class="select is-fullwidth is-medium has-background-dark" id="state-select">
+                        <select class="has-background-dark" id="state" name="state" oninput="validationSelectState()" onblur="validationSelectState()">
                           <option value="">Seleccione</option>
                           <option value="Temuco">Temuco</option>
                           <option value="Padre las Casas">Padre las Casas</option>
@@ -125,8 +127,8 @@
                   <div class="field">
                     <label class="label">Tipo de vehículo</label>
                     <div class="control">
-                      <div class="select is-fullwidth is-medium" id="">
-                        <select id="transport" name="transport" oninput="" onblur="">
+                      <div class="select is-fullwidth is-medium" id="transport-select">
+                        <select class="has-background-dark" id="transport" name="transport" oninput="validationSelectTransport()" onblur="validationSelectTransport()">
                           <option value="">Seleccione</option>
                           <option value="Furgón">Furgón</option>
                           <option value="Automóvil">Automóvil</option>
@@ -134,7 +136,18 @@
                           <option value="Camioneta">Camioneta</option>
                           <option value="Motocicleta">Motocicleta</option>
                         </select>
+                        <p id="transport-help" class="help is-danger is-hidden"></p>
                       </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="column is-one-third-desktop is-half-tablet">                  
+                  <div class="field">
+                    <label class="label">Marca</label>
+                    <div class="control">
+                      <input id="brand" name="brand" class="input is-medium" type="text" placeholder="" oninput="validationInputBrand()" onblur="validationInputBrand()">
+                      <p id="brand-help" class="help is-danger is-hidden"></p>
                     </div>
                   </div>
                 </div>
@@ -143,7 +156,8 @@
                   <div class="field">
                     <label class="label">Modelo</label>
                     <div class="control">
-                      <input id="model" name="model" class="input is-medium" type="text" placeholder="" oninput="" onblur="">
+                      <input id="model" name="model" class="input is-medium" type="text" placeholder="" oninput="validationInputModel()" onblur="validationInputModel()">
+                      <p id="model-help" class="help is-danger is-hidden"></p>
                     </div>
                   </div>
                 </div>
@@ -152,7 +166,8 @@
                   <div class="field">
                     <label class="label">Año</label>
                     <div class="control">
-                      <input id="year" name="year" class="input is-medium" type="number" placeholder="" oninput="" onblur="">
+                      <input id="year" name="year" class="input is-medium" type="number" placeholder="" oninput="validationInputYear()" onblur="validationInputYear()">
+                      <p id="year-help" class="help is-danger is-hidden"></p>
                     </div>
                   </div>
                 </div>
@@ -162,14 +177,15 @@
                     <label class="label">Revisión técnica al día</label>
                     <div class="control has-text-white is-size-5">
                       <label class="radio pr-6">
-                        <input type="radio" name="review">
+                        <input type="radio" id="yes" name="review">
                         SI
                       </label>
                       <label class="radio pl-6">
-                        <input type="radio" name="review">
+                        <input type="radio" id="no" name="review">
                         NO
                       </label>
                     </div>
+                    <p id="radio-help" class="help is-danger is-hidden"></p>
                   </div>
                 </div>
 
@@ -182,18 +198,19 @@
                     <label class="label">Tipo de lavado</label>
                     <div class="control has-text-white is-size-5">
                       <label class="checkbox pr-6">
-                        <input name="car-wash" type="checkbox" value="7000">
+                        <input name="outside" id="outside" type="checkbox" value="7000">
                         Lavado exterior $7.000
                       </label>
                       <label class="checkbox">
-                        <input name="car-wash" type="checkbox" value="5000">
+                        <input name="motor" id="motor" type="checkbox" value="5000">
                         Lavado de motor $5.000
                       </label>
                     </div>
+                    <p id="checkbox-help" class="help is-danger is-hidden"></p>
                   </div>
                 </div>
                 <div class="column is-half-desktop is-half-tablet">                  
-                  <button class="button is-block is-primary is-medium mt-5">CALCULAR</button>
+                  <button onclick="getAmount()" class="button is-block is-primary is-medium mt-5">CALCULAR</button>
                 </div>
 
                 <div class="column is-one-third-desktop is-half-tablet">                  
@@ -209,7 +226,7 @@
                   <div class="field">
                     <label class="label">IVA 19%</label>
                     <div class="control">
-                      <input id="neto" name="neto" class="input is-medium" type="text" disabled>
+                      <input id="iva" name="iva" class="input is-medium" type="text" disabled>
                     </div>
                   </div>
                 </div>
@@ -218,7 +235,7 @@
                   <div class="field">
                     <label class="label">Total</label>
                     <div class="control">
-                      <input id="neto" name="neto" class="input is-medium" type="text" disabled>
+                      <input id="total" name="total" class="input is-medium" type="text" disabled>
                     </div>
                   </div>
                 </div>
@@ -229,8 +246,8 @@
                   <div class="field">
                     <label class="label">Encargado</label>
                     <div class="control">
-                      <div class="select is-fullwidth is-medium" id="">
-                        <select id="manager" name="manager" oninput="" onblur="">
+                      <div class="select is-fullwidth is-medium" id="manager-select">
+                        <select class="has-background-dark" id="manager" name="manager" oninput="validationSelectManager()" onblur="validationSelectManager()">
                           <option value="">Seleccione</option>
                           <option value="Roberto Araneda">Roberto Araneda</option>
                           <option value="Javiera Alarcón">Javiera Alarcón</option>
@@ -238,6 +255,7 @@
                           <option value="Evaristo Alarcón">Evaristo Alarcón</option>
                         </select>
                       </div>
+                      <p id="manager-help" class="help is-danger is-hidden"></p>
                     </div>
                   </div>
                 </div>
@@ -246,7 +264,8 @@
                   <div class="field">
                     <label class="label">Fecha</label>
                     <div class="control">
-                      <input id="schedule-date" name="schedule-date" class="input is-medium" type="date" placeholder="" oninput="" onblur="">
+                      <input id="schedule-date" name="schedule-date" class="input is-medium" type="date" placeholder="" oninput="validationInputScheduleDate()" onblur="validationInputScheduleDate()">
+                      <p id="schedule-date-help" class="help is-danger is-hidden"></p>
                     </div>
                   </div>
                 </div>
@@ -255,8 +274,8 @@
                   <div class="field">
                     <label class="label">Hora</label>
                     <div class="control">
-                      <div class="select is-fullwidth is-medium" id="">
-                        <select id="schedule-time" name="schedule-time" oninput="" onblur="">
+                      <div class="select is-fullwidth is-medium" id="schedule-time-select">
+                        <select class="has-background-dark" id="schedule-time" name="schedule-time" oninput="validationSelectScheduleTime()" onblur="validationSelectScheduleTime()">
                           <option value="">Seleccione</option>
                           <option value="08:00">08:00</option>
                           <option value="09:00">09:00</option>
@@ -272,12 +291,13 @@
                           <option value="20:00">20:00</option>
                         </select>
                       </div>
+                      <p id="schedule-time-help" class="help is-danger is-hidden"></p>
                     </div>
                   </div>
                 </div>
 
               </div>
-              <button class="button is-block is-primary is-fullwidth is-medium mt-5">ENVIAR</button>
+              <button type="submit" class="button is-block is-primary is-fullwidth is-medium mt-5">ENVIAR</button>
             </form>
           </div>
 
