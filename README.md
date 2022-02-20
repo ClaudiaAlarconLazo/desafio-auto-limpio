@@ -1,9 +1,5 @@
 ### Proyecto desafio-auto-limpio
 
-#### Aplicación diseñada para XXX.
+#### Aplicación diseñada para cotizar y reservar hora para servicio de lavado Auto Limpio.
 
 
-### Credenciales de acceso
-
-#### correo electrónico: c.alarconlazo@gmail.com
-#### contraseña: password

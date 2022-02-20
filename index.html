@@ -57,7 +57,7 @@
             <p class="title is-3 pb-2">Cotiza y reserva tu lavado con nosotros</p>
             <p id="car-help" class="help is-success is-hidden"></p>
 
-            <form onsubmit="addCarWash(event)">
+            <form  onsubmit="addCarWash(event)" >
               <p class="title is-5 pt-3">CLIENTE</p>
               <div class="columns is-multiline">
                 <div class="column is-one-third-desktop is-half-tablet">                  
@@ -84,7 +84,7 @@
                   <div class="field">
                     <label class="label">Apellido</label>
                     <div class="control">
-                      <input id="last-name" name="last-name" class="input is-medium" type="text" placeholder="" oninput="validationInputLastName()" onblur="validationInputLastName()">
+                      <input id="last-name" name="last_name" class="input is-medium" type="text" placeholder="" oninput="validationInputLastName()" onblur="validationInputLastName()">
                       <p id="last-name-help" class="help is-danger is-hidden"></p>
                     </div>
                   </div>
@@ -210,7 +210,7 @@
                   </div>
                 </div>
                 <div class="column is-half-desktop is-half-tablet">                  
-                  <button onclick="getAmount()" class="button is-block is-primary is-medium mt-5">CALCULAR</button>
+                  <button onclick="getAmount(event)" class="button is-block is-primary is-medium mt-5">CALCULAR</button>
                 </div>
 
                 <div class="column is-one-third-desktop is-half-tablet">                  
@@ -264,7 +264,7 @@
                   <div class="field">
                     <label class="label">Fecha</label>
                     <div class="control">
-                      <input id="schedule-date" name="schedule-date" class="input is-medium" type="date" placeholder="" oninput="validationInputScheduleDate()" onblur="validationInputScheduleDate()">
+                      <input id="schedule-date" name="schedule_date" class="input is-medium" type="date" placeholder="" oninput="validationInputScheduleDate()" onblur="validationInputScheduleDate()">
                       <p id="schedule-date-help" class="help is-danger is-hidden"></p>
                     </div>
                   </div>
@@ -275,7 +275,7 @@
                     <label class="label">Hora</label>
                     <div class="control">
                       <div class="select is-fullwidth is-medium" id="schedule-time-select">
-                        <select class="has-background-black-ter" id="schedule-time" name="schedule-time" oninput="validationSelectScheduleTime()" onblur="validationSelectScheduleTime()">
+                        <select class="has-background-black-ter" id="schedule-time" name="schedule_time" oninput="validationSelectScheduleTime()" onblur="validationSelectScheduleTime()">
                           <option value="">Seleccione</option>
                           <option value="08:00">08:00</option>
                           <option value="09:00">09:00</option>
@@ -297,7 +297,7 @@
                 </div>
 
               </div>
-              <button type="submit" class="button is-block is-primary is-fullwidth is-medium mt-5">ENVIAR</button>
+              <button type="submit"class="button is-block is-primary is-fullwidth is-medium mt-5">ENVIAR</button>
             </form>
           </div>
 

@@ -36,7 +36,7 @@ function addCarWash(event) {
     {
     rut: data.rut,
     name: data.name,
-    last_name: data.last-name,
+    last_name: data.last_name,
     transport: data.transport,
     brand: data.brand,
     model: data.model,
@@ -46,14 +46,15 @@ function addCarWash(event) {
    },
   ])
   .then(response => {
-    alert(`${data.name} su lavado ha sido reservado. El valor del servicio es $${totalAmount}`);
+    alert(`${data.name} ${data.lastName} su lavado ha sido reservado. El valor del servicio es $${totalAmount}`);
     window.location.href = "index.html";
   })
   .catch(error => console.log(error));
 
 };
 
-function getAmount() {
+function getAmount(event) {
+  event.preventDefault();
   const outside = document.getElementById('outside').checked;
   const motor = document.getElementById('motor').checked;
   let amount = 0;
