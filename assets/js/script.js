@@ -25,7 +25,7 @@ function addCarWash(event) {
   const isValidManager = validationSelectManager();
   const isValidScheduleDate = validationInputScheduleDate();
   const isValidScheduleTime = validationSelectScheduleTime();
-  const totalAmount = getAmount();
+  const totalAmount = getAmount(event);
 
   if (!isValidRut || !isValidName || !isValidLastName || !isValidAddress || !isValidState || !isValidTransport || !isValidBrand || !isValidModel || !isValidYear || !isValidReview || !isValidService || !isValidManager || !isValidScheduleDate || !isValidScheduleTime) {
     return
@@ -46,7 +46,7 @@ function addCarWash(event) {
    },
   ])
   .then(response => {
-    alert(`${data.name} ${data.lastName} su lavado ha sido reservado. El valor del servicio es $${totalAmount}`);
+    alert(`${data.name} ${data.last_name} su lavado ha sido reservado. El valor del servicio es $${totalAmount}`);
     window.location.href = "index.html";
   })
   .catch(error => console.log(error));
